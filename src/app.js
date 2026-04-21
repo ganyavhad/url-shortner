@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
@@ -8,14 +9,14 @@ const shortUrlDomain = process.env.SHORT_URL_DOMAIN || `http://localhost:${port}
 
 // Middleware
 app.use(express.json());
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, '.')));
 
 // Simple in-memory storage for shortened URLs
 const urlMap = {};
 let urlCount = 0;
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.post('/shorten', (req, res) => {
