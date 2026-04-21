@@ -1,0 +1,13 @@
+name = "url-shortner"
+main = "src/app.js"
+compatibility_date = "2024-01-01"
+
+[env.production]
+routes = [
+  { pattern = "url-shortner.ganeshavhad.com", zone_name = "ganeshavhad.com" }
+]
+vars = { ENVIRONMENT = "production" }
+
+[assets]
+directory = "src"
+run_worker_first = true
